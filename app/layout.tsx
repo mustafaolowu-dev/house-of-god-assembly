@@ -4,11 +4,11 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://www.houseofgodassembly.com"),
   title: {
-    default: "House of God Assembly Blog | Sermons, Bible Study & Online Worship",
+    default: "House of God Assembly Hanover Park IL | Christian Worship, Sermons & Livestream",
     template: "%s | House of God Assembly"
   },
   description:
-    "Read sermon articles, Bible study notes, Christian teachings, and online worship updates from House of God Assembly in Hanover Park, Illinois.",
+    "House of God Assembly in Hanover Park, Illinois offers Christian worship services, Holy Spirit Bible teaching, Sunday livestreams, online sermons, prayer requests, ministries, events, and giving.",
   openGraph: {
     type: "website",
     siteName: "House of God Assembly",
@@ -19,31 +19,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body>
-        <div className="blog-shell">
-          <header className="blog-header">
-            <a className="blog-brand" href="/index.html" aria-label="House of God Assembly homepage">
-              <strong>House of God Assembly</strong>
-              <small>Hanover Park, Illinois</small>
-            </a>
-            <nav className="blog-nav" aria-label="Blog navigation">
-              <a href="/index.html">Home</a>
-              <a href="/blog">Blog</a>
-              <a href="/index.html#sermons">Sermons</a>
-              <a href="/index.html#prayer">Prayer Request</a>
-              <a href="/index.html?give=1#donate">Donate</a>
-              <a href="https://www.youtube.com/@HOUSEOFGODASSEMBLY" target="_blank" rel="noreferrer">
-                Watch Live
-              </a>
-            </nav>
-          </header>
-          {children}
-          <footer className="blog-footer">
-            <strong>House of God Assembly</strong>
-            <span>Online worship, Bible teaching, sermons, prayer, and global outreach.</span>
-          </footer>
-        </div>
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
