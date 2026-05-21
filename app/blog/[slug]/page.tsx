@@ -28,9 +28,6 @@ export function generateMetadata({ params }: BlogPostPageProps): Metadata {
       description: post.description,
       type: "article",
       url: `/blog/${post.slug}`,
-      publishedTime: post.date,
-      authors: [post.author],
-      tags: post.tags,
       images: [post.featuredImage]
     }
   };
