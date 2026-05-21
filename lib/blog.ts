@@ -72,8 +72,8 @@ export function getAllPosts() {
     .readdirSync(BLOG_DIR)
     .filter((file) => file.endsWith(".md"))
     .map((file) => getPostBySlug(file.replace(/\.md$/, "")))
-    .filter(Boolean)
-    .sort((a, b) => +new Date(b.date) - +new Date(a.date)) as BlogPost[];
+    .filter((post): post is BlogPost => post !== null)
+    .sort((a, b) => +new Date(b.date) - +new Date(a.date));
 }
 
 export function getPostBySlug(slug: string) {
