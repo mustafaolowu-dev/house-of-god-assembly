@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="700" viewBox="0 0 900 700" role="img" aria-labelledby="title desc">
+  <title id="title">Online worship livestream</title>
+  <desc id="desc">Abstract livestream worship visual with screen, light, and praise.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1b211b"/><stop offset=".55" stop-color="#486c53"/><stop offset="1" stop-color="#d6a647"/></linearGradient>
+    <radialGradient id="light" cx="58%" cy="36%" r="48%"><stop offset="0" stop-color="#fff6d6" stop-opacity=".9"/><stop offset=".55" stop-color="#f2d18a" stop-opacity=".24"/><stop offset="1" stop-color="#f2d18a" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="900" height="700" fill="url(#bg)"/><circle cx="540" cy="245" r="310" fill="url(#light)"/><rect x="210" y="185" width="480" height="292" rx="34" fill="#101612" stroke="#fff6e7" stroke-opacity=".35" stroke-width="6"/><rect x="246" y="222" width="408" height="218" rx="20" fill="#fff6e7" opacity=".18"/><path d="M372 374 C412 308 439 266 470 206 C482 284 465 337 518 418 C462 392 423 398 372 374 Z" fill="#fff6e7" opacity=".92"/><path d="M124 620 C230 548 345 586 450 540 C596 477 705 522 900 440 L900 700 L0 700 L0 568 C40 575 81 650 124 620 Z" fill="#12130f" opacity=".7"/>
+</svg>
