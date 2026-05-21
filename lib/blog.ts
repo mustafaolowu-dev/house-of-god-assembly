@@ -26,7 +26,7 @@ export type BlogPostInput = {
 
 const BLOG_DIR = path.join(process.cwd(), "content", "blog");
 
-export function slugify(value: string) {
+export function slugify(value: string): string {
   return value
     .toLowerCase()
     .trim()
@@ -36,11 +36,11 @@ export function slugify(value: string) {
     .slice(0, 90);
 }
 
-export function getBlogDirectory() {
+export function getBlogDirectory(): string {
   return BLOG_DIR;
 }
 
-export function serializeMarkdownPost(input: BlogPostInput) {
+export function serializeMarkdownPost(input: BlogPostInput): { slug: string; filename: string; markdown: string } {
   const slug = slugify(input.slug || input.title);
   const date = input.date || new Date().toISOString();
   const author = input.author || "House of God Assembly";
@@ -65,7 +65,7 @@ export function serializeMarkdownPost(input: BlogPostInput) {
   };
 }
 
-export function getAllPosts() {
+export function getAllPosts(): BlogPost[] {
   if (!fs.existsSync(BLOG_DIR)) return [];
 
   return fs
@@ -76,7 +76,7 @@ export function getAllPosts() {
     .sort((a, b) => +new Date(b.date) - +new Date(a.date));
 }
 
-export function getPostBySlug(slug: string) {
+export function getPostBySlug(slug: string): BlogPost | null {
   const safeSlug = slugify(slug);
   const filePath = path.join(BLOG_DIR, `${safeSlug}.md`);
   if (!fs.existsSync(filePath)) return null;
@@ -97,7 +97,7 @@ export function getPostBySlug(slug: string) {
   };
 }
 
-export function parseFrontmatter(raw: string) {
+export function parseFrontmatter(raw: string): { data: Record<string, string>; body: string } {
   if (!raw.startsWith("---")) return { data: {} as Record<string, string>, body: raw };
 
   const closing = raw.indexOf("\n---", 3);
@@ -119,7 +119,7 @@ export function parseFrontmatter(raw: string) {
   return { data, body };
 }
 
-export function markdownToHtml(markdown: string) {
+export function markdownToHtml(markdown: string): string {
   const lines = markdown.split("\n");
   const blocks: string[] = [];
   let listItems: string[] = [];
@@ -155,14 +155,14 @@ export function markdownToHtml(markdown: string) {
   return blocks.join("\n");
 }
 
-function inlineMarkdown(value: string) {
+function inlineMarkdown(value: string): string {
   return escapeHtml(value)
     .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
     .replace(/\*(.*?)\*/g, "<em>$1</em>")
     .replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, '<a href="$2" target="_blank" rel="noreferrer">$1</a>');
 }
 
-function parseTags(value?: string) {
+function parseTags(value?: string): string[] {
   if (!value) return [];
   return value
     .replace(/^\[|\]$/g, "")
@@ -171,15 +171,15 @@ function parseTags(value?: string) {
     .filter(Boolean);
 }
 
-function titleFromSlug(slug: string) {
+function titleFromSlug(slug: string): string {
   return slug.replace(/-/g, " ").replace(/\b\w/g, (letter) => letter.toUpperCase());
 }
 
-function escapeYaml(value: string) {
+function escapeYaml(value: string): string {
   return value.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
 }
 
-function escapeHtml(value: string) {
+function escapeHtml(value: string): string {
   return value
     .replace(/&/g, "&amp;")
     .replace(/</g, "&lt;")
